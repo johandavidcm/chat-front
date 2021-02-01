@@ -24,8 +24,19 @@ export const chatReducer = ( state, action ) => {
             } else {
                 return state;
             }
+        case types.cargarmensajes:
+            return {
+                ...state,
+                mensajes: [...action.payload]
+            }
+        case types.reiniciarChat:
+            return {
+                uid: '',
+                chatActivo: null, 
+                usuarios: [], 
+                mensajes: []
+            }
         default:
-            console.log('defaul')
             return state;
     }
 }

@@ -4,6 +4,7 @@ import { AuthContext } from '../auth/AuthContext';
 import { ChatContext } from './chat/ChatContext';
 import { useSocket } from '../hooks/useSocket'
 import { types } from '../types/types';
+import { scrollToBottomAnimated } from '../helpers/scrollToBottom';
 
 export const SocketContext = createContext();
 
@@ -43,7 +44,7 @@ export const SocketProvider = ({ children }) => {
                 type: types.nuevoMensaje,
                 payload: mensaje
             });
-            // TODO: Mover scroll al final
+            scrollToBottomAnimated('mensajes');
         })
     }, [socket, dispatch])
 
